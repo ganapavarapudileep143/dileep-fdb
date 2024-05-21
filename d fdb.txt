@@ -1,0 +1,362 @@
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class Dileep {
+	public static void main(String[] args) {
+		String jdbcURL="jdbc:mysql://localhost:3306/dileep";
+		String db_username = "root";
+		String db_password = "root";
+		int choice; Scanner input = new Scanner(System.in);
+		while(true) {
+			System.out.println("Welcome..! Type in the choice you want to select");
+			System.out.println("1  | section ");
+			System.out.println("2  | student");
+			System.out.println("3  | course");
+			System.out.println("4  | department");
+			System.out.println("5  | instructor ");
+			System.out.println("6  | teaches");
+			System.out.println("7  | takes");
+			System.out.println("8  | advisor");
+			System.out.println("9  | classroom");
+			System.out.println("10 | Insert the user into instructor table");
+			System.out.println("11 | Instructor class details");
+			System.out.println("12 | to assign to class a instructor");
+			System.out.println("FINISHED");
+			choice = input.nextInt();
+			switch(choice) {
+			case 1:
+				try{
+					Connection connection = DriverManager.getConnection(jdbcURL, db_username,db_password);	
+					String sql = "SELECT * FROM"+" "+"section";
+					Statement statement = connection.createStatement();
+					ResultSet result = statement.executeQuery(sql);
+					while(result.next()) {
+						String a = result.getString(1);
+						String b = result.getString(2);
+						String c = result.getString(3);
+						String d = result.getString(4);
+						String e = result.getString(5);
+						String f = result.getString(6);
+						String g = result.getString(7);				
+
+						System.out.println(a + " " + b + " " + c + " " + d + " " + e + " " + f + " " + g);
+					}
+
+					connection.close();
+
+				}catch (SQLException ex){
+					ex.printStackTrace();
+				}
+				break;
+			case 2:
+				try{
+					Connection connection = DriverManager.getConnection(jdbcURL, db_username,db_password);	
+					String sql = "SELECT * FROM"+" "+"student";
+					Statement statement = connection.createStatement();
+					ResultSet result = statement.executeQuery(sql);
+					while(result.next()) {
+						String a = result.getString(1);
+						String b = result.getString(2);
+						String c = result.getString(3);
+						String d = result.getString(4);
+						System.out.println(a + " " + b+ " " +c + " " + d);
+					}
+					connection.close();
+				}catch (SQLException ex){
+					ex.printStackTrace();
+				}
+				break;
+			case 3:
+				try{
+					Connection connection = DriverManager.getConnection(jdbcURL, db_username,db_password);	
+					String sql = "SELECT * FROM"+" "+"course";
+					Statement statement = connection.createStatement();
+					ResultSet result = statement.executeQuery(sql);
+					while(result.next()) {
+						String a= result.getString(1);
+						String b = result.getString(2);
+						String c = result.getString(3);
+						String d = result.getString(4);
+						String e=result.getString(5);
+
+						System.out.println(a + " " +b + " " + c + " " + d + " " +e);
+					}
+					connection.close();
+
+				}catch (SQLException ex){
+					ex.printStackTrace();
+				}
+				break;
+
+			case 4:
+				try{
+					Connection connection = DriverManager.getConnection(jdbcURL, db_username,db_password);
+					String sql = "SELECT * FROM"+" "+"department";
+					Statement statement = connection.createStatement();
+					ResultSet result = statement.executeQuery(sql);
+
+					while(result.next()) {
+
+						String a= result.getString(1);
+						String b = result.getString(2);
+						String c = result.getString(3);
+						String d =result.getString (4);
+
+						System.out.println(a + " " + b+ " " + c + " " + d);
+					}
+					connection.close();
+
+				}catch (SQLException ex){
+					ex.printStackTrace();
+				}
+				break;
+			case 5:
+				try{
+					Connection connection = DriverManager.getConnection(jdbcURL, db_username,db_password);	
+					String sql = "SELECT * FROM"+" "+"instructor";
+					Statement statement = connection.createStatement();
+					ResultSet result = statement.executeQuery(sql);
+
+					while(result.next()) {
+
+						String a = result.getString(1);
+						String b = result.getString(2);
+						String c = result.getString(3);
+						String d = result.getString(4);
+						String e=result.getString(5);
+
+						System.out.println(a + " " + b + " " + c + " " + d + " " +e );
+					}
+					connection.close();
+
+				}catch (SQLException ex){
+					ex.printStackTrace();
+				}
+				break;
+			case 6:
+				try{
+					Connection connection = DriverManager.getConnection(jdbcURL, db_username,db_password);	
+					String sql = "SELECT * FROM"+" "+"teaches";
+					Statement statement = connection.createStatement();
+					ResultSet result = statement.executeQuery(sql);
+
+					while(result.next()) {
+
+						String a = result.getString(1);
+						String b = result.getString(2);
+						String c = result.getString(3);
+						String d = result.getString(4);
+						String e = result.getString(5);		
+
+						System.out.println(a + " " + b + " " + c + " " + d + " " + e);
+					}
+					connection.close();
+
+				}catch (SQLException ex){
+					ex.printStackTrace();
+				}
+				break;
+
+			case 7:
+				try{
+					Connection connection = DriverManager.getConnection(jdbcURL, db_username,db_password);	
+					String sql = "SELECT * FROM"+" "+"takes";
+					Statement statement = connection.createStatement();
+					ResultSet result = statement.executeQuery(sql);
+
+					while(result.next()) {
+
+						String a= result.getString(1);
+						String b = result.getString(2);
+						String c = result.getString(3);
+						String d = result.getString(4);
+						String e = result.getString(5);
+						String f = result.getString(6);			
+
+						System.out.println(a + " " + b +  " " + c + " " + d + ""  + e + " " + f);
+					}
+					connection.close();
+
+				}catch (SQLException ex){
+					ex.printStackTrace();
+				}
+				break;
+			case 8:
+				try{
+					Connection connection = DriverManager.getConnection(jdbcURL, db_username,db_password);	
+					String sql = "SELECT * FROM"+" "+"advisor";
+					Statement statement = connection.createStatement();
+					ResultSet result = statement.executeQuery(sql);
+
+					while(result.next()) {
+
+						String a = result.getString(1);
+						String b = result.getString(2);
+						String c = result.getString(3);
+						String d=result.getString (4);
+						System.out.println(a + " " + b + " " + c + " " + d);
+					}
+					connection.close();
+
+				}catch (SQLException ex){
+					ex.printStackTrace();
+				}
+				break;
+			case 9:
+				try{
+					Connection connection = DriverManager.getConnection(jdbcURL, db_username,db_password);	
+					String sql = "SELECT * FROM"+" "+"classroom";
+					Statement statement = connection.createStatement();
+					ResultSet result = statement.executeQuery(sql);
+
+					while(result.next()) {
+
+						String s_ID = result.getString(1);
+						String i_ID = result.getString(2);	
+
+						System.out.println(s_ID + " " + i_ID);
+					}
+					connection.close();
+
+				}catch (SQLException ex){
+					ex.printStackTrace();
+				}
+				break;
+
+			case 10:
+				Scanner sc = new Scanner(System.in);
+				System.out.println("Type in the details below of the instructor");
+				System.out.println("ID");
+				String ID = sc.nextLine();
+				System.out.println("name");
+				String name = sc.nextLine();
+				System.out.println("dept_name");
+				String dept_name = sc.nextLine();
+				System.out.println("salary");
+				String salary = sc.nextLine();
+				try{
+					Connection connection = DriverManager.getConnection(jdbcURL, db_username, db_password);
+					if(connection!=null) {
+						String sql = "INSERT INTO instructor (ID, name, dept_name, salary)" + "VALUES (?, ?, ?, ?)";
+						PreparedStatement statement = connection.prepareStatement(sql);	
+						statement.setString(1, ID);
+						statement.setString(2, name);
+						statement.setString(3, dept_name);
+						statement.setString(4, salary);
+						int rows = statement.executeUpdate();
+
+						
+							System.out.println("Changes are Updated");
+							connection.close();
+						
+					}
+				}
+				catch (SQLException ex){
+					ex.printStackTrace();
+				}
+				break;
+
+			case 11:
+				try{
+					Connection connection = DriverManager.getConnection(jdbcURL, db_username,db_password);
+					Statement statement = connection.createStatement();
+					
+					System.out.println("Enter the ID");
+					Scanner sc1 = new Scanner(System.in);
+					int ID_already = sc1.nextInt();
+					String sql1 = "SELECT * FROM teaches where id = " + ID_already + ";";
+					ResultSet result1 = statement.executeQuery(sql1);
+
+					while(result1.next()) {
+						String ID11 = result1.getString(1);
+						String courseid11 = result1.getString(2);
+						String secid11 = result1.getString(3);
+						String semester11 = result1.getString(4);
+						String year11 = result1.getString(5);
+
+						System.out.println(ID11 + " " + courseid11 + " " + secid11 + " " + semester11 + " " + year11);
+					}
+					Scanner sc2 = new Scanner(System.in);
+
+					System.out.println("Enter \"SEM\" to show current sem results:");
+					String str = sc2.nextLine();
+
+					if(str.equalsIgnoreCase("SEM")) {
+						String sql2 = "SELECT * FROM teaches where id = " + ID_already + " and semester = \"summer\" and year = 2018;";
+						ResultSet result2 = statement.executeQuery(sql2);
+						while(result2.next()) {
+							String ID1 = result2.getString(1);
+							String courseid1 = result2.getString(2);
+							String secid1 = result2.getString(3);
+							String semester1 = result2.getString(4);
+							String year1 = result2.getString(5);
+							System.out.println(ID1 + " " + courseid1 + " " + secid1 + " "  + semester1 + " " + year1);
+							System.out.println("Assuming Summer 2018 is the current semester as per the given Input DataSet");
+						}
+
+					}else {System.out.println("Option Entered is incorrect");}
+					connection.close();
+
+				}catch (SQLException ex){
+					ex.printStackTrace();
+				}
+				break;
+			case 12:
+				try{
+					Connection connection = DriverManager.getConnection(jdbcURL, db_username,db_password);
+					Statement statement = connection.createStatement();
+					System.out.println("Enter the ID");
+					Scanner sc1 = new Scanner(System.in);
+					int existing_ID = sc1.nextInt();
+					String sql1 = "SELECT * FROM teaches where id = " + existing_ID + ";";
+					ResultSet result1 = statement.executeQuery(sql1);
+					while(result1.next()) {
+						String X_ID = result1.getString(1);
+						String X_courseid = result1.getString(2);
+						String X_secid = result1.getString(3);
+						String X_semester = result1.getString(4);
+						String X_year = result1.getString(5);
+
+						System.out.println(X_ID + " " + X_courseid + " " + X_secid + " " + X_semester + "" + X_year);
+					}
+					String sql3 = "SET FOREIGN_KEY_CHECKS = 0;";
+					statement.execute(sql3);
+					Scanner sc3 = new Scanner(System.in);
+					System.out.println("Enter the course Details");
+					System.out.println("id");
+					String G_courseID=sc3.nextLine();
+					System.out.println("sectionid");
+					String G_sectionID=sc3.nextLine();
+					System.out.println("semester");
+					String G_semester=sc3.nextLine();
+					System.out.println("year");
+					int G_year=sc3.nextInt();
+					String sql4 = "INSERT INTO teaches VALUES("+"\""+existing_ID+"\""+",\""+G_courseID+"\""+ "," + "\"" +G_sectionID+"\","+ "\"" +G_semester+"\","+G_year+")";
+					System.out.println(sql4);
+					statement.execute(sql4);
+					String sql5 = "SET FOREIGN_KEY_CHECKS = 1;";
+					statement.execute(sql5);
+					connection.close();
+
+				}catch (SQLException ex){
+					ex.printStackTrace();
+				}
+				break;
+
+			default :
+				System.out.println("Wrong choice Entered");
+				break;
+			}
+
+		}
+
+	}
+}
+
